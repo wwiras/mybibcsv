@@ -1,4 +1,4 @@
-# mybibcsv
+# mybibcsv - my Personal python3 BibTex to CSV converter
 
 1. First you need to create a virtual environment
 
