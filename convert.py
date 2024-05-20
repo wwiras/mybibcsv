@@ -11,9 +11,20 @@ elif not sys.argv[2].endswith(".csv"): #check csv file
     print("No csv file specified")
 else:
     # Migrating starts here....
+
+    # Get the arguments
     bibtex_filename=sys.argv[1]
     csv_filename=sys.argv[2]
-    with open(bibtex_filename) as bibtex_file:
+
+    # Read the BibTeX file
+    with open(bibtex_filename, 'r') as bibtex_file:
         bib_database = bibtexparser.load(bibtex_file)
-    df = pd.DataFrame(bib_database.entries)
+
+    # Convert BibTeX entries to a list of dictionaries
+    bib_entries = bib_database.entries
+
+    # Convert the list of dictionaries to a DataFrame
+    df = pd.DataFrame(bib_entries)
+
+    # Save the DataFrame to a CSV file
     df.to_csv(csv_filename, index=False)
